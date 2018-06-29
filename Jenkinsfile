@@ -17,7 +17,7 @@ parallel(
                     }
                 }
             }
-        }
+        },
         node('mpod') {
             container("docker") {
                 stage("docker1") {
