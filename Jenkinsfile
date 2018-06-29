@@ -1,6 +1,6 @@
 def label = "pl_scripted_mp-${UUID.randomUUID().toString()}"
 def image_name = "stuartcbrown/jentest:${label}"
-podTemplate(label: label,
+podTemplate(label: mpod,
         containers: [
                 containerTemplate(name: 'docker', image: 'docker:17.12.1-ce-dind', args: 'cat', command: '/bin/sh -c', ttyEnabled: true)
         ],
@@ -8,7 +8,7 @@ podTemplate(label: label,
                 hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')
         ]
 ){
-    node(label) {
+    node('mpod') {
         container("docker") {
             stage("docker") {
                 checkout scm
