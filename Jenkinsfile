@@ -1,6 +1,6 @@
 def label = "pl_scripted_mp-${UUID.randomUUID().toString()}"
 def image_name = "stuartcbrown/jentest:${label}"
-{
+
     node('mpod') {
         container("docker") {
             stage("docker") {
